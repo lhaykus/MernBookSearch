@@ -3,8 +3,9 @@
 This MERN stack application is a readers best friend for researching books to potentially read/purchase later! This book search engine  allows users to search for books they are intereseted in. Users are then able to save and delete those books from their saved books list!
 
 ##  Links
-Deployed Heroku App: 
-Github: 
+Deployed Heroku App: https://fast-island-14732.herokuapp.com/
+
+Github: https://github.com/lhaykus/MernBookSearch
 # Table of Contents
 - [App](#app)
 - [Built With](#built-with)
