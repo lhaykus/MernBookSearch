@@ -17,30 +17,28 @@ const SavedBooks = () => {
 
   
 
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
-  const handleDeleteBook = async (bookId) => {
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+ // create function that accepts the book's mongo _id value as param and deletes the book from the database
+ const handleDeleteBook = async (bookId) => {
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if (!token) {
-      return false;
+  if (!token) {
+    return false;
+  }
+
+  try {
+    const { data } = await removeBook({
+      variables: { bookId }
+    });
+
+    if (error) {
+      throw new Error('Something went wrong!');
     }
-
-    try {
-      const response = await removeBook({
-        variables: {bookId: bookId}
-      });
-
-      if (!response) {
-        throw new Error('something went wrong!');
-      }
-
-      
-      removeBookId(bookId);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
+    
+    removeBookId(bookId);
+  } catch (err) {
+    console.error(err);
+  }
+};
   // if data isn't here yet, say so
   if (loading) {
     return <h2>LOADING...</h2>;
