@@ -10,7 +10,7 @@ import { useMutation } from '@apollo/react-hooks';
 
 const SignupForm = () => {
   //Add_user mutation
-  const [ addUser ] = useMutation(ADD_USER);
+  const [ addUser, {error}] = useMutation(ADD_USER);
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
   // set state for form validation
@@ -38,7 +38,7 @@ const SignupForm = () => {
         variables: {...userFormData},
       });
 
-      if (!response.ok) {
+      if (error) {
         throw new Error('something went wrong!');
       }
 
